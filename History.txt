@@ -3,6 +3,10 @@
 * Bug fixes
   * Add missing SSL options ca_path, ciphers, ssl_timeout, verify_depth.
     Issue #63 by Johnneylee Jack Rollins.
+  * limiting bindings of default_proc
+    Pull request #1 by Dominic Metzger.
+  * removing generation_key & ssl_generation_key from thread local storage
+    Pull request #2 by Dominic Metzger.
 
 === 2.9.4 / 2014-02-10
 
