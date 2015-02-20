@@ -1523,14 +1523,14 @@ class TestNetHttpPersistent < Minitest::Test
 
     assert c.finished?, 'connection in same thread must be finished'
 
-    assert_empty Thread.current[@http.generation_key]
+    assert_nil Thread.current[@http.generation_key]
 
     assert_nil Thread.current[@http.request_key]
 
     t.run
     assert t.value.finished?, 'connection in other thread must be finished'
 
-    assert_empty t[@http.generation_key]
+    assert_nil t[@http.generation_key]
 
     assert_nil t[@http.request_key]
   end
@@ -1555,8 +1555,8 @@ class TestNetHttpPersistent < Minitest::Test
 
     @http.shutdown
 
-    assert_empty Thread.current[@http.generation_key]
-    assert_empty Thread.current[@http.ssl_generation_key]
+    assert_nil Thread.current[@http.generation_key]
+    assert_nil Thread.current[@http.ssl_generation_key]
 
     assert_nil Thread.current[@http.request_key]
     assert_nil Thread.current[@http.timeout_key]
@@ -1597,8 +1597,8 @@ class TestNetHttpPersistent < Minitest::Test
 
     t.run
     assert t.value.finished?
-    assert_empty t[@http.generation_key]
-    assert_empty t[@http.ssl_generation_key]
+    assert_nil t[@http.generation_key]
+    assert_nil t[@http.ssl_generation_key]
     assert_nil t[@http.request_key]
     assert_nil t[@http.timeout_key]
   end
